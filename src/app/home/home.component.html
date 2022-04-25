@@ -1,0 +1,44 @@
+<ScrollView>
+  <FlexboxLayout flexDirection="column" alignItems="center">
+    <Image src="~/account.png" width="200px" style="margin-top: 24; margin-bottom: 12;" [nsRouterLink]="['/account']"></Image>
+    <Label class="h3" style="font-weight: bold;" color="#000" text="Selamat Pagi, Fulan!"></Label>
+    <Label class="h3" style="font-weight: bold;" color="#000" text="Berat Badan Terakhir: 85 kg"></Label>
+    <FlexboxLayout flexDirection="row" alignItems="center" justifyContent="center" style="margin-top: 12; padding-left: 10; padding-right: 10;">
+      <WrapLayout backgroundColor="#f1f1f1" style="margin-right: 5; padding: 25; border-radius: 10; width: 50%;">
+        <Label class="h3" style="font-weight: bold;" color="#000" text="Batas Maksimum Kalori" textWrap="true"></Label>
+        <Label class="h1" style="font-weight: bold;" color="#dd5340" text="2000" textWrap="true"></Label>
+      </WrapLayout>
+      <WrapLayout backgroundColor="#f1f1f1" style="margin-left: 5; padding: 25; border-radius: 10; width: 50%;">
+        <Label class="h3" style="font-weight: bold;" color="#000" text="Rekomendasi Batas Kalori" textWrap="true"></Label>
+        <Label class="h1" style="font-weight: bold;" color="#dd5340" text="1500" textWrap="true"></Label>
+      </WrapLayout>
+    </FlexboxLayout>
+    <FlexboxLayout flexDirection="row" alignItems="center" justifyContent="center" style="margin-top: 12; margin-bottom: 24; padding-left: 10; padding-right: 10;">
+      <WrapLayout backgroundColor="#f1f1f1" style="padding: 25; border-radius: 10; width: 100%;">
+        <Label class="h3" style="font-weight: bold;" color="#000" text="Rekomendasi Makanan Untukmu" textWrap="true"></Label>
+        <FlexboxLayout flexDirection="column" backgroundColor="#ffffff" style="padding: 15; margin-top: 8; border-radius: 10; width: 100%;">
+          <Label class="h3" style="font-weight: bold;" color="#000" text="Nasi Jagung lauk Dada Ayam" textWrap="true"></Label>
+          <Label class="h4" text="Nasi Jagung 100gr, Dada Ayam 100gr"></Label>
+          <FlexboxLayout>
+            <Label class="h5" style="font-weight: bold;" text="Kalori: 300"></Label>
+            <Label class="h5" style="font-weight: bold;" text=" - "></Label>
+            <Label class="h5" style="font-weight: bold;" text="Sarapan"></Label>
+          </FlexboxLayout>
+        </FlexboxLayout>
+        <FlexboxLayout flexDirection="column" backgroundColor="#ffffff" style="padding: 15; margin-top: 8; border-radius: 10; width: 100%;">
+          <Label class="h3" style="font-weight: bold;" color="#000" text="Nasi Merah Sayur Kangkung" textWrap="true"></Label>
+          <Label class="h4" text="Nasi Putih 100gr, Kangkung 100gr"></Label>
+          <FlexboxLayout>
+            <Label class="h5" style="font-weight: bold;" text="Kalori: 240"></Label>
+            <Label class="h5" style="font-weight: bold;" text=" - "></Label>
+            <Label class="h5" style="font-weight: bold;" text="Sarapan"></Label>
+          </FlexboxLayout>
+        </FlexboxLayout>
+      </WrapLayout>
+    </FlexboxLayout>
+    <FlexboxLayout style="margin-bottom: 24;">
+      <Button text="Lihat Riwayat Berat Badan" [nsRouterLink]="['/history']" backgroundColor="#dd5340" color="#fff" style="border-radius: 10; margin-top: 12; font-weight: bold; padding-left: 10; padding-right: 10;"></Button>
+      <Button text="Perbarui Berat Badan" [nsRouterLink]="['/update-weight']" backgroundColor="#4e4cbb" color="#fff" style="border-radius: 10; margin-top: 12; font-weight: bold; padding-left: 10; padding-right: 10;"></Button>
+    </FlexboxLayout>
+  </FlexboxLayout>
+</ScrollView>

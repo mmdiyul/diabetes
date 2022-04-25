@@ -1,0 +1,15 @@
+<ScrollView>
+  <FlexboxLayout flexDirection="column" alignItems="center" justifyContent="center" backgroundColor="rgb(78, 76, 187)">
+    <Image src="~/logo.png" width="200px" style="margin-top: 50px;"></Image>
+    <Label class="h3" style="font-weight: bold; margin-top: 100px;" text="Masuk Akun" color="#fff"></Label>
+    <FlexboxLayout flexDirection="column" alignItems="center" justifyContent="center" style="border-radius: 10; margin-top: 50px; padding: 100px;" backgroundColor="#fff" width="80%">
+      <Label class="h3" style="font-weight: bold;" text="Username"></Label>
+      <TextField width="100%" textAlignment="center"></TextField>
+      <Label class="h3" style="font-weight: bold;" text="Password"></Label>
+      <TextField secure="true" width="100%" textAlignment="center"></TextField>
+      <Button text="Login" [nsRouterLink]="['/home']" backgroundColor="rgb(78, 76, 187)" color="#fff" style="border-radius: 10;"></Button>
+    </FlexboxLayout>
+    <Label class="h3" style="font-weight: 500; color: #ffffff; margin-top: 50px;" text="Belum punya akun?"></Label>
+    <Button text="Register" [nsRouterLink]="['/register']" backgroundColor="#b01c1c" color="#fff" style="border-radius: 10; margin-bottom: 50px;"></Button>
+  </FlexboxLayout>
+</ScrollView>
