@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "619392677982",
+    "firebase_url": "https://diabetes-xxxxxxxxxxxxxxx-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "diabetes-xxxxxxxxxxxxxxx",
+    "storage_bucket": "diabetes-xxxxxxxxxxxxxxx.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619392677982:android:4c843195eceaa32b109ccf",
+        "android_client_info": {
+          "package_name": "org.nativescript.diabetes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "619392677982-nf3lmempvm5g923muo506985u9rs29op.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMqtjZiATJS2UMs4-ueZ1F-A2ZRnhfB_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "619392677982-nf3lmempvm5g923muo506985u9rs29op.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

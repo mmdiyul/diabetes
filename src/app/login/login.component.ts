@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Page } from '@nativescript/core';
-import { Toasty } from '@triniwiz/nativescript-toasty';
+import * as Firebase from '@nativescript/firebase/app'
 
 @Component({
   selector: 'ns-login',
@@ -15,7 +15,13 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const toast = new Toasty({text: "Hello world!"})
-    toast.show()
+    Firebase.firestore().collection('users').get()
+      .then((querySnapshot: any) => {
+        querySnapshot.forEach(item => {
+          console.log(item.id)
+          console.log(item.data())
+        });
+      })
+      .catch(err => console.log("Get failed, error: " + err));
   }
 }
