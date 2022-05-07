@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { Page } from '@nativescript/core';
+import { Toasty } from '@triniwiz/nativescript-toasty';
 
 @Component({
   selector: 'ns-login',
@@ -14,5 +15,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const toast = new Toasty({text: "Hello world!"})
+    toast.show()
   }
 }

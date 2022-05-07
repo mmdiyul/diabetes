@@ -11,10 +11,11 @@ import { HomeComponent } from './home/home.component'
 import { HistoryComponent } from './history/history.component'
 import { AccountComponent } from './account/account.component'
 import { UpdateWeightComponent } from './update-weight/update-weight.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   bootstrap: [AppComponent],
-  imports: [NativeScriptModule, AppRoutingModule],
+  imports: [NativeScriptModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   declarations: [AppComponent, ItemsComponent, ItemDetailComponent, LoginComponent, RegisterComponent, HomeComponent, HistoryComponent, AccountComponent, UpdateWeightComponent],
   providers: [],
   schemas: [NO_ERRORS_SCHEMA],

@@ -4,18 +4,18 @@
     <Label class="h3" style="font-weight: bold; margin-top: 100px;" text="Daftar Akun Baru" color="#fff"></Label>
     <FlexboxLayout flexDirection="column" alignItems="center" justifyContent="center" style="border-radius: 10; margin-top: 50px; padding: 100px;" backgroundColor="#fff" width="80%">
       <Label class="h3" style="font-weight: bold;" text="Username"></Label>
-      <TextField width="100%" textAlignment="center"></TextField>
+      <TextField width="100%" textAlignment="center" autocapitalizationType="none" (textChange)="onChange('username', $event)"></TextField>
       <Label class="h3" style="font-weight: bold;" text="Password"></Label>
-      <TextField secure="true" width="100%" textAlignment="center"></TextField>
+      <TextField secure="true" width="100%" textAlignment="center" autocapitalizationType="none" (textChange)="onChange('password', $event)"></TextField>
       <Label class="h3" style="font-weight: bold;" text="Konfirmasi Password"></Label>
-      <TextField secure="true" width="100%" textAlignment="center"></TextField>
+      <TextField secure="true" width="100%" textAlignment="center" autocapitalizationType="none" (textChange)="onChange('confirm_password', $event)"></TextField>
       <Label class="h3" style="font-weight: bold;" text="Usia (tahun)"></Label>
-      <TextField keyboardType="number" width="100%" textAlignment="center"></TextField>
+      <TextField keyboardType="number" width="100%" textAlignment="center" (textChange)="onChange('usia', $event)"></TextField>
       <Label class="h3" style="font-weight: bold;" text="Tinggi Badan (cm)"></Label>
-      <TextField keyboardType="number" width="100%" textAlignment="center"></TextField>
+      <TextField keyboardType="number" width="100%" textAlignment="center" (textChange)="onChange('tinggi', $event)"></TextField>
       <Label class="h3" style="font-weight: bold;" text="Berat Badan (kg)"></Label>
-      <TextField keyboardType="number" width="100%" textAlignment="center"></TextField>
-      <Button text="Register" tap="onTap" backgroundColor="rgb(78, 76, 187)" color="#fff" style="border-radius: 10;"></Button>
+      <TextField keyboardType="number" width="100%" textAlignment="center" (textChange)="onChange('berat', $event)"></TextField>
+      <Button text="Register" (tap)="submit()" [backgroundColor]="form.invalid ? '#a1a1a1' : 'rgb(78, 76, 187)'" color="#fff" style="border-radius: 10;"></Button>
     </FlexboxLayout>
     <Label class="h3" style="font-weight: 500; color: #ffffff; margin-top: 50px;" text="Sudah punya akun?"></Label>
     <Button text="Login" [nsRouterLink]="['/login']" backgroundColor="#b01c1c" color="#fff" style="border-radius: 10; margin-bottom: 50px;"></Button>
