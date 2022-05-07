@@ -12,6 +12,7 @@ import { RouterExtensions } from '@nativescript/angular';
 export class RegisterComponent implements OnInit {
 
   form: FormGroup
+  bmiValue: number = 0
 
   constructor(
     private page: Page,
@@ -34,6 +35,13 @@ export class RegisterComponent implements OnInit {
 
   onChange(name: any, event: any) {
     this.form.get(name).setValue(event.object.text)
+    if (name == 'tinggi' || name == 'berat') {
+      const tinggi = this.form.get('tinggi').value
+      const berat = this.form.get('berat').value
+      if (tinggi && berat) {
+        this.bmiValue = parseFloat((berat / ((tinggi / 100) * (tinggi/100))).toFixed(2))
+      }
+    }
   }
 
   submit() {
@@ -44,7 +52,7 @@ export class RegisterComponent implements OnInit {
       data.berat = parseFloat(data.berat)
       data.tinggi = parseFloat(data.tinggi)
       data.usia = parseFloat(data.usia)
-      data.bmi = parseFloat(data.bmi)
+      data.bmi = this.bmiValue
       if (data.password != data.confirm_password) {
         const toast = new Toasty({text: "Password konfirmasi tidak cocok!"})
         toast.show()
@@ -61,6 +69,13 @@ export class RegisterComponent implements OnInit {
                   resp.get().then((result) => {
                     console.log(result.data())
                     toast.cancel()
+                    Firebase.firestore().collection('history').add({
+                      userId: result.id,
+                      timestamp: new Date(),
+                      tinggi: data.tinggi,
+                      berat: data.berat,
+                      bmi: data.bmi
+                    })
                     const toast2 = new Toasty({text: "Registration Successfully!"})
                     toast2.show()
                     setTimeout(() => {

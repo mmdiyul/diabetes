@@ -15,6 +15,8 @@
       <TextField keyboardType="number" width="100%" textAlignment="center" (textChange)="onChange('tinggi', $event)"></TextField>
       <Label class="h3" style="font-weight: bold;" text="Berat Badan (kg)"></Label>
       <TextField keyboardType="number" width="100%" textAlignment="center" (textChange)="onChange('berat', $event)"></TextField>
+      <Label class="h3" style="font-weight: bold;" text="Indeks BMI"></Label>
+      <TextField keyboardType="number" width="100%" textAlignment="center" [text]="bmiValue" [editable]="false"></TextField>
       <Button text="Register" (tap)="submit()" [backgroundColor]="form.invalid ? '#a1a1a1' : 'rgb(78, 76, 187)'" color="#fff" style="border-radius: 10;"></Button>
     </FlexboxLayout>
     <Label class="h3" style="font-weight: 500; color: #ffffff; margin-top: 50px;" text="Sudah punya akun?"></Label>
