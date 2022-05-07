@@ -3,14 +3,15 @@
     <Image src="~/account.png" width="200px" style="margin-top: 24; margin-bottom: 12;" [nsRouterLink]="['/login']"></Image>
     <Label class="h3" style="font-weight: bold;" color="#000" text="Profil Pengguna"></Label>
     <StackLayout backgroundColor="#ffffff" style="padding-left: 15; padding-right: 15; width: 100%; margin-top: 12;">
-      <Label class="h3" style="font-weight: bold;" color="#000" text="Nama Lengkap"></Label>
-      <Label class="h3" color="#000" text="Fulan"></Label>
       <Label class="h3" style="font-weight: bold;" color="#000" text="Nama Pengguna"></Label>
-      <Label class="h3" color="#000" text="Fulan"></Label>
+      <Label class="h3" color="#000" [text]="user ? user.username : '-'"></Label>
       <Label class="h3" style="font-weight: bold;" color="#000" text="Usia"></Label>
-      <Label class="h3" color="#000" text="22 Tahun"></Label>
+      <Label class="h3" color="#000" [text]="(user ? user.usia : 0) + 'Tahun'"></Label>
       <Label class="h3" style="font-weight: bold;" color="#000" text="Tinggi Badan"></Label>
-      <Label class="h3" color="#000" text="170 cm"></Label>
+      <Label class="h3" color="#000" [text]="(user ? user.tinggi : 0) + ' cm'"></Label>
+      <Label class="h3" style="font-weight: bold;" color="#000" text="Berat Badan"></Label>
+      <Label class="h3" color="#000" [text]="(user ? user.berat : 0) + ' cm'"></Label>
+      <Button text="Logout" (tap)="logout()" backgroundColor="#b01c1c" color="#fff" style="border-radius: 10; margin-top: 50px;"></Button>
     </StackLayout>
   </FlexboxLayout>
 </ScrollView>

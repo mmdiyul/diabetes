@@ -54,6 +54,9 @@ export class LoginComponent implements OnInit {
             toast.show()
           }
         })
+    } else {
+      const toast = new Toasty({text: "Masukkan username dan password!"})
+      toast.show()
     }
   }
 

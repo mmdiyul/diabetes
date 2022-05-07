@@ -3,8 +3,12 @@
     <Image src="~/account.png" width="200px" style="margin-top: 24; margin-bottom: 12;" [nsRouterLink]="['/account']"></Image>
     <Label class="h3" style="font-weight: bold;" color="#000" text="Perbarui Berat Badan"></Label>
     <Label style="margin-top: 24;"></Label>
+    <Label class="h3" style="font-weight: bold;" text="Masukkan Tinggi Badan (cm)"></Label>
+    <TextField keyboardType="number" width="80%" textAlignment="center" [text]="user ? user.tinggi : 0" (textChange)="onChange('tinggi', $event)"></TextField>
     <Label class="h3" style="font-weight: bold;" text="Masukkan Berat Badan (kg)"></Label>
-    <TextField width="80%" textAlignment="center"></TextField>
-    <Button text="Simpan" [nsRouterLink]="['/home']" backgroundColor="rgb(78, 76, 187)" color="#fff" style="border-radius: 10; margin-top: 10;"></Button>
+    <TextField keyboardType="number" width="80%" textAlignment="center" [text]="user ? user.berat : 0" (textChange)="onChange('berat', $event)"></TextField>
+    <Label class="h3" style="font-weight: bold;" text="Indeks BMI"></Label>
+    <TextField width="80%" textAlignment="center" [text]="bmiValue" [editable]="false"></TextField>
+    <Button text="Simpan" (tap)="submit()" [backgroundColor]="form.invalid ? '#a1a1a1' : 'rgb(78, 76, 187)'" color="#fff" style="border-radius: 10; margin-top: 10;"></Button>
   </FlexboxLayout>
 </ScrollView>
