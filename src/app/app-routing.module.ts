@@ -8,9 +8,10 @@ import { HomeComponent } from './home/home.component'
 import { HistoryComponent } from './history/history.component'
 import { UpdateWeightComponent } from './update-weight/update-weight.component'
 import { AccountComponent } from './account/account.component'
+import { AppComponent } from './app.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', component: AppComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },

@@ -1,8 +1,8 @@
 <ScrollView>
   <FlexboxLayout flexDirection="column" alignItems="center">
     <Image src="~/account.png" width="200px" style="margin-top: 24; margin-bottom: 12;" [nsRouterLink]="['/account']"></Image>
-    <Label class="h3" style="font-weight: bold;" color="#000" text="Selamat Pagi, Fulan!"></Label>
-    <Label class="h3" style="font-weight: bold;" color="#000" text="Berat Badan Terakhir: 85 kg"></Label>
+    <Label class="h3" style="font-weight: bold;" color="#000" [text]="'Selamat Datang, ' + (user ? user.username : '____') + '!'"></Label>
+    <Label class="h3" style="font-weight: bold;" color="#000" [text]="'Berat Badan Terakhir: ' + (user ? user.berat : '0') + ' kg'"></Label>
     <FlexboxLayout flexDirection="row" alignItems="center" justifyContent="center" style="margin-top: 12; padding-left: 10; padding-right: 10;">
       <WrapLayout backgroundColor="#f1f1f1" style="margin-right: 5; padding: 25; border-radius: 10; width: 50%;">
         <Label class="h3" style="font-weight: bold;" color="#000" text="Batas Maksimum Kalori" textWrap="true"></Label>

@@ -4,10 +4,10 @@
     <Label class="h3" style="font-weight: bold; margin-top: 100px;" text="Masuk Akun" color="#fff"></Label>
     <FlexboxLayout flexDirection="column" alignItems="center" justifyContent="center" style="border-radius: 10; margin-top: 50px; padding: 100px;" backgroundColor="#fff" width="80%">
       <Label class="h3" style="font-weight: bold;" text="Username"></Label>
-      <TextField width="100%" textAlignment="center" autocapitalizationType="none"></TextField>
+      <TextField width="100%" textAlignment="center" autocapitalizationType="none" (textChange)="onChange('username', $event)"></TextField>
       <Label class="h3" style="font-weight: bold;" text="Password"></Label>
-      <TextField secure="true" width="100%" textAlignment="center" autocapitalizationType="none"></TextField>
-      <Button text="Login" [nsRouterLink]="['/home']" backgroundColor="rgb(78, 76, 187)" color="#fff" style="border-radius: 10;"></Button>
+      <TextField secure="true" width="100%" textAlignment="center" autocapitalizationType="none" (textChange)="onChange('password', $event)"></TextField>
+      <Button text="Login" (tap)="login()" [backgroundColor]="form.invalid ? '#a1a1a1' : 'rgb(78, 76, 187)'"  color="#fff" style="border-radius: 10;"></Button>
     </FlexboxLayout>
     <Label class="h3" style="font-weight: 500; color: #ffffff; margin-top: 50px;" text="Belum punya akun?"></Label>
     <Button text="Register" [nsRouterLink]="['/register']" backgroundColor="#b01c1c" color="#fff" style="border-radius: 10; margin-bottom: 50px;"></Button>
