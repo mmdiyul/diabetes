@@ -54,7 +54,26 @@ export class UpdateWeightComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form.value)
-    console.log('aksgjbsakjfn')
+    if (this.form.valid) {
+      const data = this.form.value
+      Firebase.firestore().collection('users').doc(appSettings.getString('user-id')).update(data)
+        .then((resp) => {
+          console.log(resp)
+          Firebase.firestore().collection('history').add({
+            userId: appSettings.getString('user-id'),
+            timestamp: new Date(),
+            tinggi: data.tinggi,
+            berat: data.berat,
+            bmi: data.bmi
+          }).then((resp) => {
+            console.log(resp)
+            const toast = new Toasty({text: "Berhasil mengubah data!"})
+            toast.show()
+            setTimeout(() => {
+              this.router.navigate(['/home'])
+            }, 400);
+          })
+        })
+    }
   }
 }
