@@ -6,9 +6,10 @@
       <StackLayout backgroundColor="#ffffff" style="padding-left: 15; padding-right: 15; width: 100%; border-width: 0 0 1 0; border-color: black;">
         <Label class="h3" style="font-weight: bold;" color="#000" [text]="item.berat + ' kg'" textWrap="true"></Label>
         <Label class="h4" [text]="convertDate(item.timestamp)"></Label>
-        <!-- <FlexboxLayout>
-          <Label class="h5" style="font-weight: bold;" text="Kalori: 300 kcal"></Label>
-        </FlexboxLayout> -->
+        <!-- <FlexboxLayout> -->
+          <Label class="h5" style="font-weight: bold;" [text]="'BMI/IMT: ' + item.bmi"></Label>
+          <Label class="h5" style="font-weight: bold;" [text]="'BMR/AMB: ' + item.bmr + ' kkal'"></Label>
+        <!-- </FlexboxLayout> -->
       </StackLayout>
     </ng-container>
   </FlexboxLayout>
