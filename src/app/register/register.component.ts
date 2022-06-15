@@ -4,6 +4,7 @@ import { Page } from '@nativescript/core';
 import { Toasty } from '@triniwiz/nativescript-toasty';
 import * as Firebase from '@nativescript/firebase/app'
 import { RouterExtensions } from '@nativescript/angular';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'ns-register',
@@ -18,7 +19,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private page: Page,
     private fb: FormBuilder,
-    private router: RouterExtensions
+    private router: RouterExtensions,
+    private http: HttpClient
   ) {
     this.page.actionBarHidden = true;
     this.form = this.fb.group({
@@ -42,15 +44,24 @@ export class RegisterComponent implements OnInit {
       const berat = this.form.get('berat').value
       const usia = this.form.get('usia').value
       if (tinggi && berat) {
-        this.bmiValue = parseFloat((berat / ((tinggi / 100) * (tinggi/100))).toFixed(2))
-        if (usia) {
-          if (this.form.get('jenis_kelamin').value == 'Laki-laki') {
-            this.bmrValue = (13.397 * berat) + (4.799 * tinggi) - (5.677 * usia) + 88.362
-          } else {
-            this.bmrValue = (9.247 * berat) + (3.098 * tinggi) - (4.330 * usia) + 447.593
+        this.http.post('https://diabetes-bmir.herokuapp.com/api/bmi', {berat, tinggi}).subscribe((data: any) => {
+          this.bmiValue = (data.result).toFixed(2)
+          // this.bmiValue = parseFloat((berat / ((tinggi / 100) * (tinggi/100))).toFixed(2))
+          if (usia) {
+            this.http.post('https://diabetes-bmir.herokuapp.com/api/bmr', {bmi: this.bmiValue, umur: usia}).subscribe((data: any) => {
+              this.bmrValue = (data.result).toFixed(2)
+            })
+            // if (this.form.get('jenis_kelamin').value == 'Laki-laki') {
+            //   this.bmrValue = (13.397 * berat) + (4.799 * tinggi) - (5.677 * usia) + 88.362
+            // } else {
+            //   this.bmrValue = (9.247 * berat) + (3.098 * tinggi) - (4.330 * usia) + 447.593
+            // }
+            // this.bmrValue = parseInt(this.bmrValue.toFixed(0))
           }
-          this.bmrValue = parseInt(this.bmrValue.toFixed(0))
-        }
+        })
+      } else {
+        this.bmiValue = 0
+        this.bmrValue = 0
       }
     }
   }

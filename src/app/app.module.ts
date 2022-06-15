@@ -12,10 +12,11 @@ import { HistoryComponent } from './history/history.component'
 import { AccountComponent } from './account/account.component'
 import { UpdateWeightComponent } from './update-weight/update-weight.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   bootstrap: [AppComponent],
-  imports: [NativeScriptModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [NativeScriptModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   declarations: [AppComponent, ItemsComponent, ItemDetailComponent, LoginComponent, RegisterComponent, HomeComponent, HistoryComponent, AccountComponent, UpdateWeightComponent],
   providers: [],
   schemas: [NO_ERRORS_SCHEMA],

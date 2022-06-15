@@ -20,24 +20,66 @@
     <FlexboxLayout flexDirection="row" alignItems="center" justifyContent="center" style="margin-bottom: 24; padding-left: 10; padding-right: 10;">
       <WrapLayout backgroundColor="#f1f1f1" style="padding: 25; border-radius: 10; width: 100%;">
         <Label class="h3" style="font-weight: bold;" color="#000" text="Rekomendasi Makanan Untukmu" textWrap="true"></Label>
-        <FlexboxLayout flexDirection="column" backgroundColor="#ffffff" style="padding: 15; margin-top: 8; border-radius: 10; width: 100%;">
-          <Label class="h3" style="font-weight: bold;" color="#000" text="Nasi Jagung lauk Dada Ayam" textWrap="true"></Label>
-          <Label class="h4" text="Nasi Jagung 100gr, Dada Ayam 100gr"></Label>
-          <FlexboxLayout>
-            <Label class="h5" style="font-weight: bold;" text="Kalori: 300"></Label>
-            <Label class="h5" style="font-weight: bold;" text=" - "></Label>
-            <Label class="h5" style="font-weight: bold;" text="Sarapan"></Label>
+        <ng-container *ngIf="menuPagi">
+          <FlexboxLayout flexDirection="column" backgroundColor="#ffffff" style="padding: 15; margin-top: 8; border-radius: 10; width: 100%;">
+            <Label class="h3" style="font-weight: bold;" color="#000" [text]="menuPagi.nama" textWrap="true"></Label>
+            <Label class="h4" [text]="menuPagi.detail"></Label>
+            <FlexboxLayout>
+              <Label class="h5" style="font-weight: bold;" [text]="'Kalori: ' + menuPagi.kalori"></Label>
+              <Label class="h5" style="font-weight: bold;" text=" - "></Label>
+              <Label class="h5" style="font-weight: bold;" text="Sarapan"></Label>
+            </FlexboxLayout>
           </FlexboxLayout>
-        </FlexboxLayout>
-        <FlexboxLayout flexDirection="column" backgroundColor="#ffffff" style="padding: 15; margin-top: 8; border-radius: 10; width: 100%;">
-          <Label class="h3" style="font-weight: bold;" color="#000" text="Nasi Merah Sayur Kangkung" textWrap="true"></Label>
-          <Label class="h4" text="Nasi Putih 100gr, Kangkung 100gr"></Label>
-          <FlexboxLayout>
-            <Label class="h5" style="font-weight: bold;" text="Kalori: 240"></Label>
-            <Label class="h5" style="font-weight: bold;" text=" - "></Label>
-            <Label class="h5" style="font-weight: bold;" text="Sarapan"></Label>
+        </ng-container>
+        <ng-container *ngIf="menuSiang">
+          <FlexboxLayout flexDirection="column" backgroundColor="#ffffff" style="padding: 15; margin-top: 8; border-radius: 10; width: 100%;">
+            <Label class="h3" style="font-weight: bold;" color="#000" [text]="menuSiang.nama" textWrap="true"></Label>
+            <Label class="h4" [text]="menuSiang.detail"></Label>
+            <FlexboxLayout>
+              <Label class="h5" style="font-weight: bold;" [text]="'Kalori: ' + menuSiang.kalori"></Label>
+              <Label class="h5" style="font-weight: bold;" text=" - "></Label>
+              <Label class="h5" style="font-weight: bold;" text="Makan Siang"></Label>
+            </FlexboxLayout>
           </FlexboxLayout>
-        </FlexboxLayout>
+        </ng-container>
+        <ng-container *ngIf="menuMalam">
+          <FlexboxLayout flexDirection="column" backgroundColor="#ffffff" style="padding: 15; margin-top: 8; border-radius: 10; width: 100%;">
+            <Label class="h3" style="font-weight: bold;" color="#000" [text]="menuMalam.nama" textWrap="true"></Label>
+            <Label class="h4" [text]="menuMalam.detail"></Label>
+            <FlexboxLayout>
+              <Label class="h5" style="font-weight: bold;" [text]="'Kalori: ' + menuMalam.kalori"></Label>
+              <Label class="h5" style="font-weight: bold;" text=" - "></Label>
+              <Label class="h5" style="font-weight: bold;" text="Makan Malam"></Label>
+            </FlexboxLayout>
+          </FlexboxLayout>
+        </ng-container>
+        <ng-container *ngIf="menuSnack && menuSnack.length">
+          <ng-container *ngFor="let item of menuSnack">
+            <FlexboxLayout flexDirection="column" backgroundColor="#ffffff" style="padding: 15; margin-top: 8; border-radius: 10; width: 100%;">
+              <Label class="h3" style="font-weight: bold;" color="#000" [text]="item.nama" textWrap="true"></Label>
+              <Label class="h4" [text]="item.detail"></Label>
+              <FlexboxLayout>
+                <Label class="h5" style="font-weight: bold;" [text]="'Kalori: ' + item.kalori"></Label>
+                <Label class="h5" style="font-weight: bold;" text=" - "></Label>
+                <Label class="h5" style="font-weight: bold;" text="Snack dan Buah-buahan"></Label>
+              </FlexboxLayout>
+            </FlexboxLayout>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="menuMinuman && menuMinuman.length">
+          <ng-container *ngFor="let item of menuMinuman">
+            <FlexboxLayout flexDirection="column" backgroundColor="#ffffff" style="padding: 15; margin-top: 8; border-radius: 10; width: 100%;">
+              <Label class="h3" style="font-weight: bold;" color="#000" [text]="item.nama" textWrap="true"></Label>
+              <Label class="h4" [text]="item.detail"></Label>
+              <FlexboxLayout>
+                <Label class="h5" style="font-weight: bold;" [text]="'Kalori: ' + item.kalori"></Label>
+                <Label class="h5" style="font-weight: bold;" text=" - "></Label>
+                <Label class="h5" style="font-weight: bold;" text="Minuman"></Label>
+              </FlexboxLayout>
+            </FlexboxLayout>
+          </ng-container>
+        </ng-container>
+        <Button text="Perbarui Rekomendasi Makanan" (tap)="updateRecomendation()" backgroundColor="#4e4cbb" color="#fff" style="border-radius: 10; margin-top: 12; font-weight: bold; width: 70%;"></Button>
       </WrapLayout>
     </FlexboxLayout>
   </FlexboxLayout>

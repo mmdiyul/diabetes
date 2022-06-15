@@ -5,6 +5,7 @@ import * as appSettings from '@nativescript/core/application-settings'
 import { Toasty } from '@triniwiz/nativescript-toasty';
 import { RouterExtensions } from '@nativescript/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'ns-update-weight',
@@ -21,6 +22,7 @@ export class UpdateWeightComponent implements OnInit {
     private page: Page,
     private router: RouterExtensions,
     private fb: FormBuilder,
+    private http: HttpClient
   ) {
     this.page.actionBarHidden = true;
     this.form = this.fb.group({
@@ -40,6 +42,7 @@ export class UpdateWeightComponent implements OnInit {
         .then((resp) => {
           this.user = resp.data()
           this.bmiValue = this.user.bmi
+          this.bmrValue = this.user.bmr
         })
     }
   }
@@ -51,17 +54,23 @@ export class UpdateWeightComponent implements OnInit {
       const tinggi = this.form.get('tinggi').value
       const berat = this.form.get('berat').value
       if (tinggi && berat) {
-        this.bmiValue = parseFloat((berat / ((tinggi / 100) * (tinggi/100))).toFixed(2))
-        this.form.get('bmi').setValue(this.bmiValue)
-        if (usia) {
-          if (this.user.jenis_kelamin == 'Laki-laki') {
-            this.bmrValue = (13.397 * berat) + (4.799 * tinggi) - (5.677 * usia) + 88.362
-          } else {
-            this.bmrValue = (9.247 * berat) + (3.098 * tinggi) - (4.330 * usia) + 447.593
+        this.http.post('https://diabetes-bmir.herokuapp.com/api/bmi', {berat, tinggi}).subscribe((data: any) => {
+          // this.bmiValue = parseFloat((berat / ((tinggi / 100) * (tinggi/100))).toFixed(2))
+          this.bmiValue = (data.result).toFixed(2)
+          this.form.get('bmi').setValue(this.bmiValue)
+          if (usia) {
+            this.http.post('https://diabetes-bmir.herokuapp.com/api/bmr', {bmi: this.bmiValue, umur: usia}).subscribe((data: any) => {
+              this.bmrValue = (data.result).toFixed(2)
+              this.form.get('bmr').setValue(this.bmrValue)
+            })
+            // if (this.user.jenis_kelamin == 'Laki-laki') {
+            //   this.bmrValue = (13.397 * berat) + (4.799 * tinggi) - (5.677 * usia) + 88.362
+            // } else {
+            //   this.bmrValue = (9.247 * berat) + (3.098 * tinggi) - (4.330 * usia) + 447.593
+            // }
+            // this.bmrValue = parseInt(this.bmrValue.toFixed(0))
           }
-          this.bmrValue = parseInt(this.bmrValue.toFixed(0))
-          this.form.get('bmr').setValue(this.bmrValue)
-        }
+        })
       }
     }
   }
