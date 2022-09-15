@@ -10,7 +10,7 @@
       <Label class="h3" style="font-weight: bold;" color="#000" text="Tinggi Badan"></Label>
       <Label class="h3" color="#000" [text]="(user ? user.tinggi : 0) + ' cm'"></Label>
       <Label class="h3" style="font-weight: bold;" color="#000" text="Berat Badan"></Label>
-      <Label class="h3" color="#000" [text]="(user ? user.berat : 0) + ' cm'"></Label>
+      <Label class="h3" color="#000" [text]="(user ? user.berat : 0) + ' kg'"></Label>
       <Button text="Logout" (tap)="logout()" backgroundColor="#b01c1c" color="#fff" style="border-radius: 10; margin-top: 50px;"></Button>
     </StackLayout>
   </FlexboxLayout>

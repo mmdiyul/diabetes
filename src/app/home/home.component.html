@@ -6,11 +6,11 @@
     <FlexboxLayout flexDirection="row" alignItems="center" justifyContent="center" style="margin-top: 12; padding-left: 10; padding-right: 10;">
       <WrapLayout backgroundColor="#f1f1f1" style="margin-right: 5; padding: 25; border-radius: 10; width: 50%;">
         <Label class="h3" style="font-weight: bold;" color="#000" text="Batas Maksimum Kalori" textWrap="true"></Label>
-        <Label class="h1" style="font-weight: bold;" color="#dd5340" [text]="user ? (user.bmr * 1.9).toFixed(0) : 0" textWrap="true"></Label>
+        <Label class="h1" style="font-weight: bold;" color="#dd5340" [text]="user ? (user.bmr * 1.9).toFixed(2) : 0" textWrap="true"></Label>
       </WrapLayout>
       <WrapLayout backgroundColor="#f1f1f1" style="margin-left: 5; padding: 25; border-radius: 10; width: 50%;">
         <Label class="h3" style="font-weight: bold;" color="#000" text="Batas Minimum Kalori" textWrap="true"></Label>
-        <Label class="h1" style="font-weight: bold;" color="#dd5340" [text]="user ? (user.bmr * 1.2).toFixed(0) : 0" textWrap="true"></Label>
+        <Label class="h1" style="font-weight: bold;" color="#dd5340" [text]="user ? (user.bmr * 1).toFixed(2) : 0" textWrap="true"></Label>
       </WrapLayout>
     </FlexboxLayout>
     <FlexboxLayout style="margin-bottom: 10; width: 100%;">
